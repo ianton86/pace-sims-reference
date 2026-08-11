@@ -11,6 +11,8 @@ from .state_store import ExperimentStateFile, command_to_step, step_to_command
 from .state_machine import Executor
 from .stop_conditions import dynamic_stop_scan
 from .safety import EnvelopeViolation, SafetyEnvelope
+from .qc import Finding, QualityCriteria
+from .decisions import Decision, MENU, decide
 from .driver import InstrumentDriver, SimulatedInstrument
 
 __all__ = [
@@ -19,5 +21,6 @@ __all__ = [
     'ExperimentStateFile', 'command_to_step', 'step_to_command',
     'Executor', 'dynamic_stop_scan',
     'EnvelopeViolation', 'SafetyEnvelope',
+    'QualityCriteria', 'Finding', 'Decision', 'decide', 'MENU',
     'InstrumentDriver', 'SimulatedInstrument',
 ]
