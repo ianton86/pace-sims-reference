@@ -34,8 +34,10 @@ Three things are omitted, and it is worth being precise about which:
   bases encode facility-specific operating procedure. What the paper's claims
   depend on — the quality-control rules the agent was instructed to apply — is
   published here as executable code in `pace/qc/` and `pace/decisions.py`;
-  the surrounding corpus is not. `knowledge/` gives the entry schema and a
-  couple of sanitised examples so the granularity is clear.
+  the surrounding corpus is not. `knowledge/` gives the entry schema and two
+  sanitised examples — one procedural, one judgement — so the granularity is
+  clear, along with the two retrieval rules a guide must satisfy and a
+  validator that checks them (`pytest knowledge/`).
 * **The live plotting and analysis stack.** Not load-bearing for any claim in
   the paper. `analysis/` contains only the reductions the decision rules
   consume.
@@ -46,6 +48,7 @@ Three things are omitted, and it is worth being precise about which:
 conda env create -f environment.yml && conda activate pace-sims
 pytest                       # the whole suite, no hardware needed
 pytest replay/               # just the study replay
+pytest knowledge/            # the knowledge-guide schema rules
 python -m replay             # the replay, as a readable table
 jupyter lab notebooks/demo_run.ipynb
 ```
@@ -134,6 +137,7 @@ checked.
 | The closed decision menu | `pace/decisions.py` |
 | The instrument boundary | `pace/driver/base.py` |
 | Reproducing the study's decisions | `replay/` |
+| What a knowledge entry is | `knowledge/schema.py`, `knowledge/example_guide.md` |
 
 ## Adapting this to another instrument
 
@@ -156,6 +160,9 @@ property of your instrument and sample rather than of this code:
   constructor argument and every default is the study's own, measured on one
   sample with one ion source. `criteria.describe()` prints the whole standard
   as a table; treat that as the thing you replace.
+* **The knowledge entries.** `knowledge/example_guide.md` shows the format and
+  the granularity; `knowledge/schema.py` states the two rules that make a guide
+  retrievable and will check yours.
 * **The reductions.** `analysis/` turns a depth profile into the metrics the
   criteria judge. If your data does not arrive as a per-scan table of species
   intensities, this is the layer to repoint — `layer_window` in particular
