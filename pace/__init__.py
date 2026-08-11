@@ -9,10 +9,13 @@ from .sequence import (
 )
 from .state_store import ExperimentStateFile, command_to_step, step_to_command
 from .state_machine import Executor
+from .stop_conditions import dynamic_stop_scan
+from .driver import InstrumentDriver, SimulatedInstrument
 
 __all__ = [
     'Command', 'ExperimentState', 'MeasurementParams', 'MeasurementSequence',
     'MeasurementStep', 'NextAction', 'Peak', 'Polarity', 'StopCondition',
     'ExperimentStateFile', 'command_to_step', 'step_to_command',
-    'Executor',
+    'Executor', 'dynamic_stop_scan',
+    'InstrumentDriver', 'SimulatedInstrument',
 ]

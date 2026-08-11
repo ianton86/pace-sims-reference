@@ -394,6 +394,13 @@ class Executor:
         current = self.queue[self.index] if self.index < len(self.queue) else None
         if current is not None and current.name in ('measure_now', 'time_series'):
             self.stop_measurement_requested = True
+            # Told to the driver rather than left as a flag for it to notice:
+            # the driver owns the acquisition, and a flag it has to poll is one
+            # it can miss. The flag stays because it is what the telemetry file
+            # reports and what scopes the request to this one command.
+            stop = getattr(self.driver, 'stop_measurement', None)
+            if stop is not None:
+                stop()
             self._log('Live command: stopping the current measurement')
         else:
             self._log('Live command: stop_measurement ignored '
@@ -526,6 +533,7 @@ class Executor:
             'current_command': (self.queue[self.index].name
                                 if self.index < len(self.queue) else None),
             'paused': self._paused,
+            'stop_measurement_requested': self.stop_measurement_requested,
             'persistent': self.persistent,
             'persistent_idle': self._persistent_idle,
             'active_param_set': self.active_param_set,
