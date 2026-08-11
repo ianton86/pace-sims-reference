@@ -1,0 +1,14 @@
+# Minimal environment for the PACE-SIMS reference implementation.
+#
+# Deliberately small: this repository runs against a simulator, so it needs no
+# instrument-control, COM, OCR or gRPC dependencies of any kind.
+name: pace-sims
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - numpy
+  - pandas
+  - matplotlib
+  - jupyterlab
+  - pytest

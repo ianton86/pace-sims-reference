@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite both the software (this record) and the
+  paper it accompanies.
+title: "PACE-SIMS: reference implementation of checkpoint-gated autonomous ToF-SIMS orchestration"
+abstract: >-
+  Reference implementation of the checkpoint-gated orchestration described in
+  the accompanying paper: the execution state machine, quality-control criteria,
+  decision framework, safety enforcement, experiment state schema, and a
+  simulator that stands in for the instrument so the whole lifecycle runs with
+  no hardware.
+type: software
+authors:
+  - family-names: Ievlev
+    given-names: Anton
+    affiliation: Oak Ridge National Laboratory
+    # orcid: "https://orcid.org/TODO"
+  # TODO: add remaining authors before release.
+license: TODO            # pending institutional release determination
+version: 0.1.0-dev
+date-released: TODO
+# TODO: fill in once the tagged release is archived.
+# doi: 10.5281/zenodo.TODO
+# repository-code: https://github.com/TODO/pace-sims
+preferred-citation:
+  type: article
+  title: "TODO — paper title"
+  authors:
+    - family-names: Ievlev
+      given-names: Anton
+  # doi: TODO
+  # journal: TODO
+  # year: TODO

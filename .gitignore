@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+.idea/
