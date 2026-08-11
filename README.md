@@ -44,16 +44,46 @@ Three things are omitted, and it is worth being precise about which:
 
 ```bash
 conda env create -f environment.yml && conda activate pace-sims
-pytest replay/
-jupyter lab notebooks/demo_run.ipynb
+pytest                       # the whole suite, no hardware needed
+pytest replay/               # just the study replay
+python -m replay.harness     # the replay, as a readable table
 ```
 
-TODO: fill in once `replay/` and the demo notebook exist.
+TODO: the demo notebook.
 
 ## Replaying the study
 
-TODO — one command; explain that this reproduces every run-phase decision
-reported in the paper from the deposited quality-control log.
+`python -m replay.harness` re-decides all 35 of the study's measurements from
+the deposited depth profiles in `data/profiles/`, using the same criteria
+(`pace/qc/`) and the same decision menu (`pace/decisions.py`) the run was
+steered by. It reproduces **35/35** of the accept-or-reject decisions and
+**33/35** of the finer outcomes, including all five rejections with the remedy
+each one called for — the three sputter-rate corrections at the frame counts the
+study actually used, the repeat after the ion-source excursion, and the
+escalation when the repeat came back low.
+
+The two finer-grade differences are stated in `replay/test_replay.py` rather
+than tuned away, because a threshold fitted to reproduce a set of labels has
+stopped being a criterion. Both concern the drift flag: one measurement the
+study flagged sits just under the threshold when drift is measured as the mean
+over the layer instead of the peak, and one drift anchor the study labelled
+plainly is flagged here.
+
+**What this shows.** That the decision sequence was a consequence of stated
+criteria applied to the data, rather than of judgement that cannot be
+inspected. **What it does not show:** that the rules ran as code at the time —
+they did not (see the note at the end of this README) — nor a revalidation of
+the science, since the metrics are re-derived here by a simpler reduction than
+the study's own.
+
+Everything the decisions turn on is **derived from the profiles**: the layer
+window, the points across the layer, counts per pixel per shot, the channel
+yield. `data/measurements.csv` carries only what no profile can contain — the
+raster, the stop reason, whether an ion-source excursion was recorded, the
+crater uniformity, and each measurement's role. Its `recorded_decision` column
+is compared against and never read as input; replaying off the study's own
+quality-control log would be circular, since that file holds the metrics and
+the decisions side by side.
 
 ## Architecture map
 
