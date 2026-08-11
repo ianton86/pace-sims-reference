@@ -183,6 +183,15 @@ class SimulatedInstrument(InstrumentDriver):
         if ramp_rate is not None and ramp_time is not None:
             raise ValueError('give ramp_rate or ramp_time, never both — they '
                              'over-determine the same line')
+        # Bounded here as well as by the executor: a real driver's ramp writes
+        # values the plan never named, and those follow the automatic rule —
+        # clamped and logged, never rejected. Demonstrated on the target so the
+        # contract is exercised rather than only described.
+        if self.envelope is not None:
+            bounded = self.envelope.check_temperature(target, clamp=True)
+            if bounded != target:
+                self._log(f'envelope clamped {target} °C to {bounded} °C')
+                target = bounded
         if self.setpoint != target:
             self.setpoint = target
             self._settling = self.settle_ticks

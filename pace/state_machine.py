@@ -60,6 +60,7 @@ import time
 import traceback
 from collections import deque
 
+from .safety import guard_command
 from .sequence import Command, NextAction
 
 
@@ -96,9 +97,10 @@ class Executor:
     """
 
     def __init__(self, store, driver, *, param_sets=None, persistent=False,
-                 log=None, tick_interval=0.5, meta=None):
+                 log=None, tick_interval=0.5, meta=None, envelope=None):
         self.store = store
         self.driver = driver
+        self.envelope = envelope
         self.param_sets = dict(param_sets or {})
         self.persistent = persistent
         self.tick_interval = tick_interval
@@ -172,6 +174,14 @@ class Executor:
         decision point and holds, rather than running on or tearing down, while
         whatever is steering it decides what happens next.
         """
+        # Handed over once, here, rather than declared separately to both: the
+        # record of the envelope and the thing enforcing it must not be able to
+        # drift apart, which they can as soon as there are two declarations.
+        if self.envelope is not None:
+            use = getattr(self.driver, 'use_envelope', None)
+            if use is not None:
+                use(self.envelope)
+
         while True:
             self.poll()
 
@@ -283,7 +293,16 @@ class Executor:
         Executor-owned handlers win over the driver's. Only two are: ``pause``
         and ``wait_a_while`` are pure control flow with nothing to actuate, and
         a driver that had to implement them would be implementing the loop.
+
+        The envelope is applied here, to the value the **plan** asked for. It
+        does not and cannot cover the intermediate setpoints of a ramp: those
+        are generated inside the driver, below this boundary, which is why the
+        driver is handed the envelope too (``InstrumentDriver.use_envelope``)
+        and is required to bound each write it makes. Enforcement is in two
+        places because the values originate in two places.
         """
+        guard_command(command, self.envelope, self._log)
+
         own = getattr(self, '_cmd_' + command.name, None)
         if own is not None:
             return own(*command.args)
@@ -522,8 +541,13 @@ class Executor:
             finally:
                 self._draining = False
 
-        self.store.export(self.queue, self.index, self.param_sets,
-                          meta={**self.meta, 'persistent': self.persistent})
+        # The envelope is recorded by reading it back off the object that
+        # enforces it, never from a copy kept alongside — so the plan file
+        # cannot claim bounds that are not the ones in force.
+        meta = {**self.meta, 'persistent': self.persistent}
+        if self.envelope is not None:
+            meta['safety_envelope'] = self.envelope.to_dict()
+        self.store.export(self.queue, self.index, self.param_sets, meta=meta)
 
     def write_status(self):
         """Write the telemetry file a monitor polls."""

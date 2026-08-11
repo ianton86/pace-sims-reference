@@ -53,6 +53,28 @@ class InstrumentDriver(ABC):
     has to know that the plan refers to parameters by name.
     """
 
+    envelope = None
+
+    def use_envelope(self, envelope):
+        """Adopt the run's safety envelope. Called once, before the first tick.
+
+        The executor bounds the values the **plan** asks for, but a driver that
+        generates values of its own — every intermediate setpoint of a ramp, a
+        retract height, a position resolved at runtime — must bound those
+        itself, because they never pass through the executor. Enforcement is in
+        two places because the values originate in two places.
+
+        Those self-generated values follow the *automatic* rule: clamp to the
+        nearest bound and log it, never reject. Rejecting would abort an
+        unattended run over a value nobody asked for — the ramp's start, taken
+        from the measured temperature, is the case that actually bites, since a
+        stage sitting below the declared range would refuse its own first step.
+
+        Handed over rather than declared separately so that the envelope in the
+        record and the envelope being enforced cannot drift apart.
+        """
+        self.envelope = envelope
+
     # ── Required ─────────────────────────────────────────────────────
 
     @abstractmethod
