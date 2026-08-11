@@ -9,6 +9,7 @@ from .sequence import (
 )
 from .state_store import ExperimentStateFile, command_to_step, step_to_command
 from .state_machine import Executor
+from .client import ExperimentClient
 from .stop_conditions import dynamic_stop_scan
 from .safety import EnvelopeViolation, SafetyEnvelope
 from .qc import Finding, QualityCriteria
@@ -19,7 +20,7 @@ __all__ = [
     'Command', 'ExperimentState', 'MeasurementParams', 'MeasurementSequence',
     'MeasurementStep', 'NextAction', 'Peak', 'Polarity', 'StopCondition',
     'ExperimentStateFile', 'command_to_step', 'step_to_command',
-    'Executor', 'dynamic_stop_scan',
+    'Executor', 'ExperimentClient', 'dynamic_stop_scan',
     'EnvelopeViolation', 'SafetyEnvelope',
     'QualityCriteria', 'Finding', 'Decision', 'decide', 'MENU',
     'InstrumentDriver', 'SimulatedInstrument',

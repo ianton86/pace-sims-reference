@@ -198,5 +198,3 @@ def report(results):
     return '\n'.join(lines)
 
 
-if __name__ == '__main__':
-    print(report(replay()))
