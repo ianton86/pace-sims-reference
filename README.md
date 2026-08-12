@@ -1,20 +1,23 @@
 # PACE-SIMS — reference implementation
 
-> **Status: work in progress, not yet released.** This repository is being
-> prepared as the code-availability deposit for a forthcoming paper. It is
-> private and sections marked TODO are not finished. Before making it public,
-> read every shipped docstring by hand: the automated leak scan matches
-> vocabulary, not description, and cannot tell you whether a docstring describes
-> something it should not.
+> **This repository is the code-availability deposit for a forthcoming paper.**
+> The paper's DOI, journal and year are added to `CITATION.cff` on publication,
+> along with the DOI of an archived release; until then those fields are absent
+> rather than guessed at.
+>
+> Start with **`python -m replay`**. It re-decides all 35 of the study's
+> measurements from the deposited depth profiles, using the same criteria and
+> decision menu the run was steered by, and reproduces the decision sequence the
+> paper reports.
 
 ## What this is
 
 A reference implementation of the checkpoint-gated orchestration described in
-[paper — DOI TODO]: the execution **state machine**, the **quality-control
-criteria** and **decision framework** applied at each checkpoint, the **safety
-envelope** the engine enforces, the **experiment state schema**, and a
-**simulator** that stands in for the instrument so the whole lifecycle runs with
-no hardware.
+the accompanying paper (DOI added on publication): the execution **state
+machine**, the **quality-control criteria** and **decision framework** applied
+at each checkpoint, the **safety envelope** the engine enforces, the
+**experiment state schema**, and a **simulator** that stands in for the
+instrument so the whole lifecycle runs with no hardware.
 
 The centrepiece for a reader is `replay/`: it re-runs the real decision code
 over the study's logged measurement metrics and reproduces the run's decision
@@ -30,7 +33,7 @@ Three things are omitted, and it is worth being precise about which:
   instrument where an incorrect command has physical consequences. It is not
   redistributable. Its public boundary is the `InstrumentDriver` abstract base
   class in `pace/driver/base.py`; pseudocode for the production implementation
-  is in the paper's supporting information [SI section TODO].
+  is in the paper's supporting information.
 * **The curated knowledge corpus.** The full experiment- and analysis-knowledge
   bases encode facility-specific operating procedure. What the paper's claims
   depend on — the quality-control rules the agent was instructed to apply — is
