@@ -7,10 +7,14 @@ published. The production implementation wraps proprietary, vendor-internal
 interfaces of the acquisition software and drives a shared user-facility
 instrument where an incorrect command has physical consequences; it is not
 redistributable. What *is* publishable is its boundary, and that boundary is
-narrow on purpose — five methods, none of which returns data. A reader can see
+narrow on purpose: **seven methods command the instrument** — ``measure_now``,
+``time_series``, ``set_temperature``, ``move_stage``, ``shutdown``, ``abort``
+and ``stop_measurement`` — and none of them returns data. Three more
+(``use_envelope``, ``on_tick``, ``status``) command nothing. A reader can see
 exactly how much authority the orchestration layer has over the hardware by
-reading this file, which is the point of putting it here rather than describing
-it in prose.
+counting the methods in this file, which is the point of putting it here rather
+than describing it in prose — so the count has to be right, and has to include
+the two that end an acquisition rather than only the four a plan can name.
 
 The contract
 ------------

@@ -290,3 +290,34 @@ def test_a_plan_step_the_driver_cannot_do_names_the_step(tmp_path):
         {'quick': static_params()})
     assert 'time_series' in reason
     assert 'SimulatedInstrument' in reason
+
+
+# ── The boundary's stated authority must match its actual surface ────
+
+def test_the_boundary_docstring_counts_its_commanding_methods():
+    """The boundary docstring invites a reader to judge how much authority the
+    orchestration layer has over hardware by counting the methods in it, so the
+    count has to be right.
+
+    It said "five", which omitted ``abort`` and ``stop_measurement`` — the two
+    that end an acquisition rather than start one. Understating the authority
+    surface is the wrong direction to be wrong in for a safety claim, and it is
+    the drift a prose count acquires as soon as a method is added below it.
+    """
+    import inspect
+    from pace.driver import base
+
+    # These reach nothing: one receives the envelope, one is housekeeping, one
+    # reports. Everything else on the interface can move the instrument.
+    NON_COMMANDING = {'use_envelope', 'on_tick', 'status'}
+    defined = {name for name, _ in
+               inspect.getmembers(base.InstrumentDriver, inspect.isfunction)
+               if not name.startswith('_')}
+    commanding = defined - NON_COMMANDING
+
+    assert len(commanding) == 7, sorted(commanding)
+    assert 'seven methods command' in base.__doc__
+    for name in sorted(commanding):
+        assert f'``{name}``' in base.__doc__, (
+            f'{name} commands the instrument but the boundary docstring, which '
+            f'is what a reader counts, does not list it')
