@@ -23,17 +23,20 @@ authors:
     affiliation: University of Michigan
   - family-names: Kalinin
     given-names: Sergei
-    affiliation: University of Tennessee Knoxville
-    
+    affiliation: University of Tennessee, Knoxville
+
 # The SOFTWARE licence. The deposited measurement data in data/ is CC BY 4.0 and
 # is licensed separately -- CFF has one license field, so the split is recorded in
 # LICENSE / LICENSE-DATA rather than here.
 license: MIT
-copyright: "Copyright (c) 2026 UT-Battelle, LLC"
+# Copyright (c) 2026 UT-Battelle, LLC -- a COMMENT, because `copyright` is not a
+# key in the CFF 1.2.0 schema and an unknown key makes GitHub reject the whole
+# file, which costs the "Cite this repository" button rather than one line. The
+# notice itself lives in LICENSE and LICENSE-DATA, which is where it binds.
 repository-code: "https://github.com/ianton86/pace-sims-reference"
 version: 0.1.0-dev
-# TODO: set on the tagged release, and archive it.
-date-released: 2026-01-01
+# `date-released` and `doi` are deliberately absent until there is a tagged,
+# archived release: an invented date is a claim, and CFF treats both as optional.
 # doi: 10.5281/zenodo.TODO
 preferred-citation:
   type: article
