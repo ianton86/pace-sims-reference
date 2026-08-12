@@ -2,9 +2,10 @@
 
 > **Status: work in progress, not yet released.** This repository is being
 > prepared as the code-availability deposit for a forthcoming paper. It is
-> private, carries no licence yet (see `LICENSE`), and sections marked TODO are
-> not finished. Do not make it public until the licence is in place and the
-> pre-publication checks have been run.
+> private and sections marked TODO are not finished. Before making it public,
+> read every shipped docstring by hand: the automated leak scan matches
+> vocabulary, not description, and cannot tell you whether a docstring describes
+> something it should not.
 
 ## What this is
 
@@ -170,6 +171,26 @@ property of your instrument and sample rather than of this code:
 
 What does *not* need changing: the executor, the plan file, the decision menu,
 and the provenance rule.
+
+## Licence
+
+**Code: MIT. Data: CC BY 4.0.** Two licences because the repository holds two
+different things, and each carries the one built for it — both require
+attribution.
+
+| | Licence | Covers |
+|---|---|---|
+| Software and documentation | MIT (`LICENSE`) | `pace/`, `analysis/`, `replay/`, `knowledge/`, `tests/`, `notebooks/`, and this prose |
+| Deposited measurement data | CC BY 4.0 (`LICENSE-DATA`) | `data/` — the 35 depth profiles and the acquisition record |
+
+The split is deliberate. Creative Commons advise against applying a CC licence
+to software: it grants no patent rights, does not distinguish source from object
+form, and cannot be combined with GPL-family code — so CC BY on `pace/` would
+obstruct exactly the reuse the *Adapting this to another instrument* section
+above invites. CC BY is, conversely, the established licence for research data
+and what data repositories expect.
+
+Copyright (c) 2026 UT-Battelle, LLC.
 
 ## A note on what the decision code is
 

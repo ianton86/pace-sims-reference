@@ -16,12 +16,16 @@ authors:
     affiliation: Oak Ridge National Laboratory
     # orcid: "https://orcid.org/TODO"
   # TODO: add remaining authors before release.
-license: TODO            # pending institutional release determination
+# The SOFTWARE licence. The deposited measurement data in data/ is CC BY 4.0 and
+# is licensed separately -- CFF has one license field, so the split is recorded in
+# LICENSE / LICENSE-DATA rather than here.
+license: MIT
+copyright: "Copyright (c) 2026 UT-Battelle, LLC"
+repository-code: "https://github.com/ianton86/pace-sims-reference"
 version: 0.1.0-dev
-date-released: TODO
-# TODO: fill in once the tagged release is archived.
+# TODO: set on the tagged release, and archive it.
+date-released: 2026-01-01
 # doi: 10.5281/zenodo.TODO
-# repository-code: https://github.com/TODO/pace-sims
 preferred-citation:
   type: article
   title: "TODO — paper title"

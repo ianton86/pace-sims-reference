@@ -1,18 +1,42 @@
-PLACEHOLDER — NO LICENCE IS GRANTED YET
-=======================================
+MIT License
 
-This repository is a work in progress being prepared as the code-availability
-deposit for a forthcoming publication. It is **private** and, until the file
-below is replaced, no rights to use, copy, modify or redistribute it are
-granted to anyone.
+Copyright (c) 2026 UT-Battelle, LLC
 
-The licence is pending an institutional software-release determination
-(Oak Ridge National Laboratory / UT-Battelle, LLC). When that determination is
-made, this file must be replaced in full by the approved licence text together
-with any required copyright and funding notices, BEFORE the repository is made
-public.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Do not make this repository public while this placeholder is still here.
-An unlicensed public repository is "all rights reserved" by default, which
-would leave a reader unable to legally run or reuse the code the paper points
-them at — the opposite of what a code-availability deposit is for.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+---------------------------------------------------------------------------
+SCOPE: THE MEASUREMENT DATA IS LICENSED SEPARATELY
+---------------------------------------------------------------------------
+
+The MIT terms above cover the software and documentation in this repository —
+`pace/`, `analysis/`, `replay/`, `knowledge/`, `tests/`, `notebooks/`, and the
+prose that accompanies them.
+
+They do NOT cover the deposited measurement data in `data/`, which is released
+under the Creative Commons Attribution 4.0 International licence. See
+`LICENSE-DATA` and `data/README.md`.
+
+The split is deliberate rather than administrative. Creative Commons advise
+against applying a CC licence to software: it grants no patent rights, does not
+distinguish source from object form, and cannot be combined with GPL-family
+code — so CC BY on `pace/` would obstruct exactly the reuse this repository
+invites. Conversely CC BY is the established licence for research data and is
+what data repositories and journals expect. Each half therefore carries the
+licence built for it, and both require attribution.

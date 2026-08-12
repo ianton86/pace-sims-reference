@@ -1,0 +1,34 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 UT-Battelle, LLC
+
+The measurement data in `data/` — the 35 deposited depth profiles under
+`data/profiles/` and the acquisition record `data/measurements.csv` — is
+licensed under the Creative Commons Attribution 4.0 International licence.
+
+    https://creativecommons.org/licenses/by/4.0/
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the licence, and
+indicate if changes were made.
+
+The authoritative legal code is the version published at the URL above. It is
+referenced rather than reproduced here on purpose: a licence transcribed by
+hand is a licence that can differ from the one it claims to be, and the
+difference would not be visible to a reader. To vendor the full text, download
+it from creativecommons.org unmodified.
+
+
+HOW TO ATTRIBUTE
+----------------
+
+Cite the accompanying paper and this repository. `CITATION.cff` carries both in
+machine-readable form, and GitHub's "Cite this repository" button reads it.
+
+
+WHAT THIS DOES NOT COVER
+------------------------
+
+The software and documentation in this repository are licensed separately,
+under the MIT licence — see `LICENSE`. The reason for the split, and why a CC
+licence is the wrong instrument for the code, is recorded there.
