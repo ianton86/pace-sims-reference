@@ -14,8 +14,17 @@ authors:
   - family-names: Ievlev
     given-names: Anton
     affiliation: Oak Ridge National Laboratory
-    # orcid: "https://orcid.org/TODO"
-  # TODO: add remaining authors before release.
+    orcid: "https://orcid.org/0000-0003-3645-0508"
+  - family-names: Hare
+    given-names: Heather
+    affiliation: University of Michigan
+  - family-names: Li
+    given-names: Yiyang
+    affiliation: University of Michigan
+  - family-names: Kalinin
+    given-names: Sergei
+    affiliation: University of Tennessee Knoxville
+    
 # The SOFTWARE licence. The deposited measurement data in data/ is CC BY 4.0 and
 # is licensed separately -- CFF has one license field, so the split is recorded in
 # LICENSE / LICENSE-DATA rather than here.
