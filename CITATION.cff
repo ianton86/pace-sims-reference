@@ -40,10 +40,16 @@ version: 0.1.0-dev
 # doi: 10.5281/zenodo.TODO
 preferred-citation:
   type: article
-  title: "TODO — paper title"
+  title: "PACE-SIMS: Checkpoint-Gated Autonomous SIMS Characterization with AI-Agent Quality Control"
   authors:
     - family-names: Ievlev
       given-names: Anton
+    - family-names: Hare
+      given-names: Heather
+    - family-names: Li
+      given-names: Yiyang
+    - family-names: Kalinin
+      given-names: Sergei
   # doi: TODO
   # journal: TODO
   # year: TODO
