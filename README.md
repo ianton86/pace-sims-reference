@@ -179,6 +179,53 @@ property of your instrument and sample rather than of this code:
 What does *not* need changing: the executor, the plan file, the decision menu,
 and the provenance rule.
 
+## Citation
+
+Please cite **both** the software and the paper — they are separate records and a
+reader chasing the implementation needs the first, not only the second.
+
+The software, as the archived `v1.0.0` snapshot rather than the moving branch:
+
+```bibtex
+@software{pace_sims_software_2026,
+  author    = {Ievlev, Anton and Hare, Heather and Li, Yiyang and Kalinin, Sergei},
+  title     = {{PACE-SIMS}: reference implementation of checkpoint-gated
+               autonomous {ToF-SIMS} orchestration},
+  version   = {1.0.0},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21906851},
+  url       = {https://github.com/ianton86/pace-sims-reference}
+}
+```
+
+The paper, currently the arXiv preprint:
+
+```bibtex
+@misc{pace_sims_paper_2026,
+  author        = {Ievlev, Anton and Hare, Heather and Li, Yiyang and Kalinin, Sergei},
+  title         = {{PACE-SIMS}: Checkpoint-Gated Autonomous {SIMS} Characterization
+                   with {AI-Agent} Quality Control},
+  year          = {2026},
+  eprint        = {2608.12277},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2608.12277},
+  note          = {Submitted to Digital Discovery}
+}
+```
+
+Two notes on which identifier to use, because the choice is not cosmetic:
+
+* **The version DOI above, not the concept DOI.** `10.5281/zenodo.21906851` is the
+  immutable v1.0.0 record. [`10.5281/zenodo.21906850`](https://doi.org/10.5281/zenodo.21906850)
+  is the concept DOI and always resolves to the *newest* version — right for "this
+  project", wrong for a citation that has to keep pointing at the code a claim was
+  checked against.
+* **Replace the preprint entry once the paper is accepted**, and expect the journal
+  record to be what a reader cites thereafter. `CITATION.cff` is the machine-readable
+  version of both entries and is what GitHub's *Cite this repository* button reads,
+  so it is the other place that changes on acceptance.
+
 ## Licence
 
 **Code: MIT. Data: CC BY 4.0.** Two licences because the repository holds two
