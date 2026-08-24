@@ -1,9 +1,13 @@
 # PACE-SIMS — reference implementation
 
-> **This repository is the code-availability deposit for a forthcoming paper.**
-> The paper's DOI, journal and year are added to `CITATION.cff` on publication,
-> along with the DOI of an archived release; until then those fields are absent
-> rather than guessed at.
+> **This repository is the code-availability deposit for the PACE-SIMS paper.**
+> Preprint: [arXiv:2608.12277](https://doi.org/10.48550/arXiv.2608.12277),
+> submitted to *Digital Discovery*. The code is archived at
+> [10.5281/zenodo.21906851](https://doi.org/10.5281/zenodo.21906851) — **cite that
+> DOI**, the immutable `v1.0.0` snapshot the paper's claims were checked against;
+> the [concept DOI](https://doi.org/10.5281/zenodo.21906850) resolves to whatever
+> the newest version is. `CITATION.cff` carries both, and gains the journal DOI on
+> acceptance.
 >
 > Start with **`python -m replay`**. It re-decides all 35 of the study's
 > measurements from the deposited depth profiles, using the same criteria and
@@ -13,11 +17,11 @@
 ## What this is
 
 A reference implementation of the checkpoint-gated orchestration described in
-the accompanying paper (DOI added on publication): the execution **state
-machine**, the **quality-control criteria** and **decision framework** applied
-at each checkpoint, the **safety envelope** the engine enforces, the
-**experiment state schema**, and a **simulator** that stands in for the
-instrument so the whole lifecycle runs with no hardware.
+the accompanying paper ([preprint](https://doi.org/10.48550/arXiv.2608.12277)):
+the execution **state machine**, the **quality-control criteria** and
+**decision framework** applied at each checkpoint, the **safety envelope** the
+engine enforces, the **experiment state schema**, and a **simulator** that
+stands in for the instrument so the whole lifecycle runs with no hardware.
 
 The centrepiece for a reader is `replay/`: it re-runs the real decision code
 over the study's logged measurement metrics and reproduces the run's decision
