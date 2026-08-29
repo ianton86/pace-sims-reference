@@ -9,6 +9,10 @@
 > the newest version is. `CITATION.cff` carries both, and gains the journal DOI on
 > acceptance.
 >
+> The study's measurement data, run transcript and the **notebook executed during
+> the run** are deposited separately at
+> [10.5281/zenodo.21892339](https://doi.org/10.5281/zenodo.21892339).
+>
 > Start with **`python -m replay`**. It re-decides all 35 of the study's
 > measurements from the deposited depth profiles, using the same criteria and
 > decision menu the run was steered by, and reproduces the decision sequence the
@@ -35,9 +39,16 @@ Three things are omitted, and it is worth being precise about which:
 * **The production instrument driver.** It wraps proprietary, vendor-internal
   interfaces of the acquisition software, and drives a shared user-facility
   instrument where an incorrect command has physical consequences. It is not
-  redistributable. Its public boundary is the `InstrumentDriver` abstract base
-  class in `pace/driver/base.py`; pseudocode for the production implementation
-  is in the paper's supporting information.
+  redistributable, and its release is additionally subject to ongoing
+  technology-transfer review following invention and software disclosures filed
+  with ORNL / UT-Battelle. Its public boundary is the `InstrumentDriver` abstract
+  base class in `pace/driver/base.py`; pseudocode for the production
+  implementation is in the paper's supporting information. The notebook executed
+  during the study — which calls this layer through its high-level API — is
+  published with the dataset
+  ([10.5281/zenodo.21892339](https://doi.org/10.5281/zenodo.21892339),
+  `docs/notebook/`), with its outputs preserved, so what ran can be inspected
+  even though it cannot be re-run outside our environment.
 * **The curated knowledge corpus.** The full experiment- and analysis-knowledge
   bases encode facility-specific operating procedure. What the paper's claims
   depend on — the quality-control rules the agent was instructed to apply — is
@@ -92,7 +103,9 @@ criteria applied to the data, rather than of judgement that cannot be
 inspected. **What it does not show:** that the rules ran as code at the time —
 they did not (see the note at the end of this README) — nor a revalidation of
 the science, since the metrics are re-derived here by a simpler reduction than
-the study's own.
+the study's own. What *did* run is published as a record: the executed notebook,
+with its full run log, is in the dataset at `docs/notebook/`, so this
+re-implementation can be compared directly against it.
 
 Everything the decisions turn on is **derived from the profiles**: the layer
 window, the points across the layer, counts per pixel per shot, the channel
@@ -214,6 +227,19 @@ The paper, currently the arXiv preprint:
 }
 ```
 
+The dataset, which holds the measurement data, the run transcript and the
+executed run notebook:
+
+```bibtex
+@dataset{pace_sims_data_2026,
+  author    = {Ievlev, Anton and Hare, Heather and Li, Yiyang and Kalinin, Sergei},
+  title     = {{PACE-SIMS} blind-study dataset},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21892339}
+}
+```
+
 Two notes on which identifier to use, because the choice is not cosmetic:
 
 * **The version DOI above, not the concept DOI.** `10.5281/zenodo.21906851` is the
@@ -255,4 +281,6 @@ agent's knowledge base rather than in the execution engine, and the engine did
 not enforce them — the safety envelope in `pace/safety.py` is the part that was
 enforced engine-side. The replay harness is therefore a faithful re-derivation
 of the decisions from the logged metrics, not a recording of the code path that
-made them at the time.
+made them at the time. The recording is the executed notebook deposited with the
+dataset (`docs/notebook/`), which preserves the run log of all 35 measurements as
+it was produced.
