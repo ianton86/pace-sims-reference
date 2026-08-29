@@ -34,26 +34,21 @@ license: MIT
 # file, which costs the "Cite this repository" button rather than one line. The
 # notice itself lives in LICENSE and LICENSE-DATA, which is where it binds.
 repository-code: "https://github.com/ianton86/pace-sims-reference"
-version: 1.0.0
-date-released: 2026-08-12
+version: 1.0.1
+date-released: 2026-08-29
 # The CONCEPT DOI, which always resolves to the NEWEST archived version, so this
 # line does not silently go stale the day a v1.1 is released. The version-specific
 # DOI for the v1.0.0 record sits under `identifiers` below, because an availability
 # statement should cite the exact snapshot its claims were checked against, and
 # that one must NOT drift.
 #
-# Which of the two a reader ends up citing is NOT decided here: cffconvert takes
-# the DOI for its APA and BibTeX output from `identifiers`, not from this field, so
-# the rendered citation names the v1.0.0 snapshot and the concept DOI is what stays
-# available for anyone wanting every version. That is the right way round for a
-# deposit backing a paper -- but it is renderer behaviour, checked (cffconvert
-# 2.0.0) rather than assumed, and swapping the two fields is how to reverse it.
-doi: 10.5281/zenodo.21906850
+
+doi: 10.5281/zenodo.22166787 
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.21906851
+    value: 10.5281/zenodo.22166787
     description: >-
-      Zenodo archive of the v1.0.0 release -- the immutable snapshot the paper's
+      Zenodo archive of the v1.0.1 release -- the immutable snapshot the paper's
       code-availability statement cites.
 preferred-citation:
   type: article

@@ -3,9 +3,9 @@
 > **This repository is the code-availability deposit for the PACE-SIMS paper.**
 > Preprint: [arXiv:2608.12277](https://doi.org/10.48550/arXiv.2608.12277),
 > submitted to *Digital Discovery*. The code is archived at
-> [10.5281/zenodo.21906851](https://doi.org/10.5281/zenodo.21906851) — **cite that
-> DOI**, the immutable `v1.0.0` snapshot the paper's claims were checked against;
-> the [concept DOI](https://doi.org/10.5281/zenodo.21906850) resolves to whatever
+> [10.5281/zenodo.22166787](https://doi.org/10.5281/zenodo.22166787) — **cite that
+> DOI**, the immutable `v1.0.1` snapshot the paper's claims were checked against;
+> the [concept DOI](https://doi.org/10.5281/zenodo.22166787) resolves to whatever
 > the newest version is. `CITATION.cff` carries both, and gains the journal DOI on
 > acceptance.
 >
@@ -46,7 +46,7 @@ Three things are omitted, and it is worth being precise about which:
   implementation is in the paper's supporting information. The notebook executed
   during the study — which calls this layer through its high-level API — is
   published with the dataset
-  ([10.5281/zenodo.21892339](https://doi.org/10.5281/zenodo.21892339),
+  ([10.5281/zenodo.22166787](https://doi.org/10.5281/zenodo.22166787),
   `docs/notebook/`), with its outputs preserved, so what ran can be inspected
   even though it cannot be re-run outside our environment.
 * **The curated knowledge corpus.** The full experiment- and analysis-knowledge
@@ -204,10 +204,10 @@ The software, as the archived `v1.0.0` snapshot rather than the moving branch:
   author    = {Ievlev, Anton and Hare, Heather and Li, Yiyang and Kalinin, Sergei},
   title     = {{PACE-SIMS}: reference implementation of checkpoint-gated
                autonomous {ToF-SIMS} orchestration},
-  version   = {1.0.0},
+  version   = {1.0.1},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.21906851},
+  doi       = {10.5281/zenodo.22166787},
   url       = {https://github.com/ianton86/pace-sims-reference}
 }
 ```
@@ -239,18 +239,6 @@ executed run notebook:
   doi       = {10.5281/zenodo.21892339}
 }
 ```
-
-Two notes on which identifier to use, because the choice is not cosmetic:
-
-* **The version DOI above, not the concept DOI.** `10.5281/zenodo.21906851` is the
-  immutable v1.0.0 record. [`10.5281/zenodo.21906850`](https://doi.org/10.5281/zenodo.21906850)
-  is the concept DOI and always resolves to the *newest* version — right for "this
-  project", wrong for a citation that has to keep pointing at the code a claim was
-  checked against.
-* **Replace the preprint entry once the paper is accepted**, and expect the journal
-  record to be what a reader cites thereafter. `CITATION.cff` is the machine-readable
-  version of both entries and is what GitHub's *Cite this repository* button reads,
-  so it is the other place that changes on acceptance.
 
 ## Licence
 
